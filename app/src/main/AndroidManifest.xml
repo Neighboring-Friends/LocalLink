@@ -32,6 +32,9 @@
         <activity
             android:name=".attraction.AttractionActivity"
             android:exported="false"/>
+        <activity
+            android:name=".attraction.AttractionDetailActivity"
+            android:exported="false"/>
     </application>
 
 </manifest>

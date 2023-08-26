@@ -3,4 +3,6 @@
     <dimen name="major_image_height">200dp</dimen>
     <dimen name="major_text_size">25sp</dimen>
     <dimen name="minor_text_size">15sp</dimen>
+    <dimen name="padding">10dp</dimen>
+    <dimen name="margin">5dp</dimen>
 </resources>

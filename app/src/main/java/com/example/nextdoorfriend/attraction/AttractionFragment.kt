@@ -27,7 +27,7 @@ class AttractionFragment : Fragment(R.layout.fragment_attraction) {
         AttractionLoader(activity)
     }
 
-    private val majorAttractionList = arrayListOf<Attraction>()
+    private val majorAttractionList = mutableListOf<Attraction>()
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -40,10 +40,10 @@ class AttractionFragment : Fragment(R.layout.fragment_attraction) {
         binding = FragmentAttractionBinding.bind(view)
 
         binding.majorAttractionRecyclerView.apply{
-            adapter = MajorAttractionRecyclerViewAdaptor(majorAttractionList)
+            adapter = MajorAttractionRecyclerViewAdaptor(activity, majorAttractionList)
         }
         binding.minorAttractionRecyclerView.apply {
-            adapter = MinorAttractionRecyclerViewAdaptor(majorAttractionList)
+            adapter = MinorAttractionRecyclerViewAdaptor(activity, majorAttractionList)
         }
 
         CoroutineScope(Dispatchers.IO)
