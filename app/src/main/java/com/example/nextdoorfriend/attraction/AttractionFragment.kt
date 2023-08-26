@@ -2,18 +2,13 @@ package com.example.nextdoorfriend.attraction
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.ArrayAdapter
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nextdoorfriend.R
 import com.example.nextdoorfriend.databinding.FragmentAttractionBinding
 import com.example.quoridor.adapter.MajorAttractionRecyclerViewAdaptor
-import com.example.quoridor.adapter.MinorAttractionRecyclerViewAdaptor
+import com.example.quoridor.adapter.AttractionCourseRecyclerViewAdaptor
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -43,7 +38,7 @@ class AttractionFragment : Fragment(R.layout.fragment_attraction) {
             adapter = MajorAttractionRecyclerViewAdaptor(activity, majorAttractionList)
         }
         binding.minorAttractionRecyclerView.apply {
-            adapter = MinorAttractionRecyclerViewAdaptor(activity, majorAttractionList)
+            adapter = AttractionCourseRecyclerViewAdaptor(activity, majorAttractionList)
         }
 
         CoroutineScope(Dispatchers.IO)

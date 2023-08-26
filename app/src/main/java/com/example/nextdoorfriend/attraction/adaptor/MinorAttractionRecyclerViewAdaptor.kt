@@ -2,7 +2,6 @@ package com.example.quoridor.adapter
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,10 +10,9 @@ import com.example.nextdoorfriend.R
 import com.example.nextdoorfriend.attraction.Attraction
 import com.example.nextdoorfriend.attraction.AttractionDetailActivity
 import com.example.nextdoorfriend.attraction.Func.putAny
-import com.example.nextdoorfriend.databinding.ItemMajorAttractionBinding
 import com.example.nextdoorfriend.databinding.ItemMinorAttractionBinding
 
-class MinorAttractionRecyclerViewAdaptor(val context: Context, val itemList: MutableList<Attraction>): RecyclerView.Adapter<MinorAttractionRecyclerViewAdaptor.ViewHolder>() {
+class MinorAttractionRecyclerViewAdaptor(val context: Context, val itemList: MutableList<Attraction>): RecyclerView.Adapter<Att.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val binding by lazy {

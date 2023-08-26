@@ -8,9 +8,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.nextdoorfriend.R
-import com.example.nextdoorfriend.databinding.FragmentAttractionDetailBinding
 import com.example.nextdoorfriend.databinding.FragmentRecruitBinding
-import com.example.quoridor.adapter.MinorAttractionRecyclerViewAdaptor
+import com.example.quoridor.adapter.AttractionCourseRecyclerViewAdaptor
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -46,7 +45,7 @@ class RecruitFragment : Fragment(R.layout.fragment_attraction_detail) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.minorAttractionRecyclerView.apply {
-            adapter = MinorAttractionRecyclerViewAdaptor(activity, majorAttractionList)
+            adapter = AttractionCourseRecyclerViewAdaptor(activity, majorAttractionList)
         }
 
         CoroutineScope(Dispatchers.IO)
