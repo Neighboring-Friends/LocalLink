@@ -1,5 +1,7 @@
 package com.example.nextdoorfriend
 
+import Key.Companion.DB_URL
+import Key.Companion.DB_USERS
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -28,7 +30,6 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "이메일 또는 패스워드가 입력되지 않았습니다.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            //하ㅎ하ㅏ하하
             //파이어베이스에서 인자 가져오기
             Firebase.auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
@@ -43,7 +44,7 @@ class LoginActivity : AppCompatActivity() {
                 }
 
         }
-        //오늘 밤새야지 민석아 싫어요ㅇㄹ
+        //gkgkg last test
         binding.signInButton.setOnClickListener {
             val email = binding.emailEditText.text.toString()
             val password = binding.passwordEditText.text.toString()
@@ -55,7 +56,18 @@ class LoginActivity : AppCompatActivity() {
 
             Firebase.auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
+                    val currentUser =   Firebase.auth.currentUser
+                    if (task.isSuccessful && currentUser != null) {
+                        val userId = currentUser.uid
+
+                        val user = mutableMapOf<String, Any>()
+                        user["userId"] = userId
+                        user["username"] = email
+
+                        Firebase.database(DB_URL).reference.child(DB_USERS).child(userId).updateChildren(user)
+
+                        Toast.makeText(this, "저장완료.", Toast.LENGTH_SHORT).show()
+
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
                         finish()
