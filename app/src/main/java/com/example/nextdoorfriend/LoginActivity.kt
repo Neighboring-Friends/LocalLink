@@ -42,7 +42,7 @@ class LoginActivity : AppCompatActivity() {
                 }
 
         }
-        //gkgkgk
+        //gkgkg last test
         binding.signInButton.setOnClickListener {
             val email = binding.emailEditText.text.toString()
             val password = binding.passwordEditText.text.toString()
