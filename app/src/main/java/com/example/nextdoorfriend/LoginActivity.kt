@@ -1,5 +1,7 @@
 package com.example.nextdoorfriend
 
+import Key.Companion.DB_URL
+import Key.Companion.DB_USERS
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -54,7 +56,18 @@ class LoginActivity : AppCompatActivity() {
 
             Firebase.auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
+                    val currentUser =   Firebase.auth.currentUser
+                    if (task.isSuccessful && currentUser != null) {
+                        val userId = currentUser.uid
+
+                        val user = mutableMapOf<String, Any>()
+                        user["userId"] = userId
+                        user["username"] = email
+
+                        Firebase.database(DB_URL).reference.child(DB_USERS).child(userId).updateChildren(user)
+
+                        Toast.makeText(this, "저장완료.", Toast.LENGTH_SHORT).show()
+
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
                         finish()

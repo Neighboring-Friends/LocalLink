@@ -10,7 +10,7 @@ import com.example.nextdoorfriend.databinding.ItemChatroomBinding
 import com.example.nextdoorfriend.databinding.ItemUserBinding
 import com.example.nextdoorfriend.userlist.UserItem
 
-class ChatListAdapter : ListAdapter<ChatRoomItem, ChatListAdapter.ViewHolder>(differ) {
+class ChatListAdapter(private val onClick: (ChatRoomItem)-> Unit) : ListAdapter<ChatRoomItem, ChatListAdapter.ViewHolder>(differ) {
 
     inner class ViewHolder(private val binding: ItemChatroomBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -18,6 +18,9 @@ class ChatListAdapter : ListAdapter<ChatRoomItem, ChatListAdapter.ViewHolder>(di
         fun bind(item: ChatRoomItem) {
             binding.nicknameTextView.text = item.otherUserName
             binding.lastMessageTextView.text = item.lastMessage
+            binding.root.setOnClickListener {
+                onClick(item)
+            }
         }
     }
 
@@ -45,7 +48,6 @@ class ChatListAdapter : ListAdapter<ChatRoomItem, ChatListAdapter.ViewHolder>(di
             override fun areContentsTheSame(oldItem: ChatRoomItem, newItem: ChatRoomItem): Boolean {
                 return oldItem == newItem
             }
-
         }
     }
 }
