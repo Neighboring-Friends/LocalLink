@@ -28,7 +28,7 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "이메일 또는 패스워드가 입력되지 않았습니다.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-
+            //하ㅎ하ㅏ하하
             //파이어베이스에서 인자 가져오기
             Firebase.auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
