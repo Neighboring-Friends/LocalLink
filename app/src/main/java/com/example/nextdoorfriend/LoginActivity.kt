@@ -43,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
                 }
 
         }
-
+        //오늘 밤새야지 민석아
         binding.signInButton.setOnClickListener {
             val email = binding.emailEditText.text.toString()
             val password = binding.passwordEditText.text.toString()
