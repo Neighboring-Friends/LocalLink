@@ -10,4 +10,7 @@
 
     <color name="major_text_color">#000000</color>
     <color name="minor_text_color">#7A7A7A</color>
+
+    <color name="primary">#EE476F</color>
+    <color name="secondary">#F48B8B</color>
 </resources>

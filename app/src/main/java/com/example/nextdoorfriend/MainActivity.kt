@@ -51,11 +51,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.testBtn.setOnClickListener {
-            startActivity(Intent(this, AttractionActivity::class.java))
-        }
-
-        binding.minseokBtn.setOnClickListener {
-            startActivity(Intent(this, AttractionCourseActivity::class.java))
+            startActivity(Intent(this, TestActivity::class.java))
         }
     }
 
