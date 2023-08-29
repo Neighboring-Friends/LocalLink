@@ -13,21 +13,23 @@ import com.example.nextdoorfriend.userlist.UserItem
 class ChatAdapter : ListAdapter<ChatItem, ChatAdapter.ViewHolder>(differ) {
 
     var otherUserItem: UserItem? = null
+
     inner class ViewHolder(private val binding: ItemChatBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
+
         fun bind(item: ChatItem) {
-            if(item.userId == otherUserItem?.userId) {
+            if (item.userId == otherUserItem?.userId) {
                 binding.usernameTextView.isVisible = true
                 binding.usernameTextView.text = otherUserItem?.username
                 binding.messageTextView.text = item.message
                 binding.messageTextView.gravity = Gravity.START
-            }
-            else{
+            } else {
                 binding.usernameTextView.isVisible = false
                 binding.messageTextView.text = item.message
                 binding.messageTextView.gravity = Gravity.END
             }
+
         }
     }
 

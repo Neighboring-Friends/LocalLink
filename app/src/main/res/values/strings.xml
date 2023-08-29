@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Local Link</string>
-
+    <string name="default_notification_channel_id">default_notification_channel_id</string>
     <string name="attraction_detail_tab_1">설명</string>
     <string name="attraction_detail_tab_2">모집</string>
 </resources>
