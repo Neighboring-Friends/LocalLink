@@ -175,7 +175,7 @@
                 android:gravity="center"
                 android:padding="@dimen/padding"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/round_stroke">
+                android:background="@drawable/round_stroke_sencondary">
 
                 <ImageView
                     android:id="@+id/camera_image_view"
@@ -201,7 +201,7 @@
             android:gravity="top"
             android:padding="@dimen/padding"
             android:layout_marginTop="15dp"
-            android:background="@drawable/round_stroke"
+            android:background="@drawable/round_stroke_sencondary"
             android:textColorHint="@color/hint_text_color"
             android:hint="@string/write_post_activity_extra_content_hint"
             app:layout_constraintTop_toBottomOf="@id/secondary_content_layout"

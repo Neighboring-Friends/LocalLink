@@ -10,6 +10,7 @@ import com.example.nextdoorfriend.attraction.adaptor.MajorAttractionRecyclerView
 import com.example.nextdoorfriend.attraction.adaptor.MinorAttractionRecyclerViewAdaptor
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -32,6 +33,9 @@ class AttractionFragment : Fragment(R.layout.fragment_attraction) {
             "강정고령보 - 디아크(The ARC)",
             "경북대학교 가로수길(백양로)")
 
+    private lateinit var getAllJob: Job
+    private lateinit var getSomeJob: Job
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
@@ -49,10 +53,13 @@ class AttractionFragment : Fragment(R.layout.fragment_attraction) {
             adapter = MinorAttractionRecyclerViewAdaptor(activity, minorAttractionList)
         }
 
-        CoroutineScope(Dispatchers.IO).launch {
+        getAllJob = CoroutineScope(Dispatchers.IO).launch {
             attractionLoader.getAllWithFilter(
                 {
                     (it.attractName in majorNameList)
+                },
+                {
+                  majorAttractionList.size == majorNameList.size
                 },
                 {
                     majorAttractionList += it
@@ -65,10 +72,10 @@ class AttractionFragment : Fragment(R.layout.fragment_attraction) {
                 {
                     CoroutineScope(Dispatchers.IO).launch {  }
                 }
-            )
+            ).await()
         }
 
-        CoroutineScope(Dispatchers.IO).launch {
+        getSomeJob = CoroutineScope(Dispatchers.IO).launch {
             attractionLoader.getSomeWithFilter(
                 15,
                 {
@@ -85,7 +92,13 @@ class AttractionFragment : Fragment(R.layout.fragment_attraction) {
                 {
                     CoroutineScope(Dispatchers.IO).launch {  }
                 }
-            )
+            ).await()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        getAllJob.cancel()
+        getSomeJob.cancel()
     }
 }

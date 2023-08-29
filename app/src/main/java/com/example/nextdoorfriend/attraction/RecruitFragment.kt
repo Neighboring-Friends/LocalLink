@@ -11,6 +11,7 @@ import com.example.nextdoorfriend.databinding.FragmentRecruitBinding
 import com.example.nextdoorfriend.attraction.adaptor.MinorAttractionRecyclerViewAdaptor
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -23,6 +24,8 @@ class RecruitFragment : Fragment(R.layout.fragment_recruit) {
     }
 
     private val majorAttractionList = mutableListOf<Attraction>()
+
+    private lateinit var getListJob: Job
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -38,7 +41,7 @@ class RecruitFragment : Fragment(R.layout.fragment_recruit) {
             adapter = MinorAttractionRecyclerViewAdaptor(activity, majorAttractionList)
         }
 
-        CoroutineScope(Dispatchers.IO)
+        getListJob = CoroutineScope(Dispatchers.IO)
             .launch {
                 if (majorAttractionList.size == 0) {
                     for (i in 1..5) {
@@ -51,5 +54,10 @@ class RecruitFragment : Fragment(R.layout.fragment_recruit) {
                     }
                 }
             }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        getListJob.cancel()
     }
 }

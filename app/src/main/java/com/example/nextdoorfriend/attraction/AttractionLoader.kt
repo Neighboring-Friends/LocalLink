@@ -158,6 +158,7 @@ class AttractionLoader(val context: Context) {
     }
 
     fun getAllWithFilter(filter: (Attraction) -> Boolean,
+                         earlyStop: () -> Boolean,
                          eachJobBuilder: (Attraction) -> Job,
                          afterGeocodingJobBuilder: (Attraction) -> Job
     ): Deferred<Unit> {
@@ -211,6 +212,12 @@ class AttractionLoader(val context: Context) {
                     attractList += item
                     eachJobBuilder(item).start()
                 }
+
+                if (earlyStop()) {
+                    Log.d(TAG, "getAllWithFilter earlyStop")
+                    return@async
+                }
+
             }
 
             for (attraction in attractList) {
@@ -218,7 +225,7 @@ class AttractionLoader(val context: Context) {
                 afterGeocodingJobBuilder(attraction).start()
             }
 
-            Log.d(TAG, "getAllWithFilter end")
+
         }
     }
 

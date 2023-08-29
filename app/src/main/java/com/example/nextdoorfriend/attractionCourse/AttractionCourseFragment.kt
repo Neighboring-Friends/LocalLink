@@ -10,6 +10,7 @@ import com.example.nextdoorfriend.databinding.FragmentAttractionCourseBinding
 import com.example.nextdoorfriend.attractionCourse.adaptor.AttractionCourseRecyclerViewAdaptor
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -29,6 +30,8 @@ class AttractionCourseFragment : Fragment(R.layout.fragment_attraction_course) {
             "근대산업거리",
             "시장여행길",
             "북구역사속으로")
+
+    private lateinit var getAllJob: Job
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -55,7 +58,7 @@ class AttractionCourseFragment : Fragment(R.layout.fragment_attraction_course) {
 //            }.await()
 //        }
 
-        CoroutineScope(Dispatchers.IO).launch {
+        getAllJob = CoroutineScope(Dispatchers.IO).launch {
             attractionCourseLoader.getAllWithFilter(
                 {
                     (it.courseNm in targetNameList)
@@ -68,7 +71,12 @@ class AttractionCourseFragment : Fragment(R.layout.fragment_attraction_course) {
                         )
                     }
                 }
-            )
+            ).await()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        getAllJob.cancel()
     }
 }
