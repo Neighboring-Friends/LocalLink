@@ -61,6 +61,9 @@
         <activity
             android:name=".TestActivity"
             android:exported="false"/>
+        <activity
+            android:name=".WritePostActivity"
+            android:exported="false"/>
     </application>
 
 </manifest>

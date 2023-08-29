@@ -15,6 +15,7 @@ class TestActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(binding.root)
 
         binding.apply {
             attractionBtn.setOnClickListener {
@@ -24,7 +25,7 @@ class TestActivity: AppCompatActivity() {
                 startActivity(Intent(this@TestActivity, AttractionCourseActivity::class.java))
             }
             writeFab.setOnClickListener {
-
+                startActivity(Intent(this@TestActivity, WritePostActivity::class.java))
             }
         }
 

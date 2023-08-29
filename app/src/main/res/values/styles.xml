@@ -31,4 +31,9 @@
         <item name = "android:textColor">@color/minor_text_color</item>
         <item name = "android:breakStrategy">high_quality</item>
     </style>
+
+    <style name="edit_text">
+        <item name="android:textColorHint">@color/hint_text_color</item>
+        <item name="android:backgroundTint">@color/primary</item>
+    </style>
 </resources>
