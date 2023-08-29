@@ -15,75 +15,98 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:minHeight="300dp"
-            android:minWidth="300dp"
+            android:maxHeight="@dimen/major_image_size"
+            android:maxWidth="@dimen/major_image_size"
+            android:scaleType="centerCrop"
             android:src="@drawable/ic_launcher_background"/>
 
         <TextView
-            android:id="@+id/address_tv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin"
-            tools:text="address_tv"/>
-        <TextView
             android:id="@+id/attractName_tv"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin"
+            android:layout_gravity="start"
+            style="@style/major_detail_text_style"
             tools:text="attractName_tv"/>
         <TextView
             android:id="@+id/attractContents_tv"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin"
+            android:layout_gravity="start"
+            style="@style/major_detail_text_style"
             tools:text="attractContents_tv"/>
         <TextView
-            android:id="@+id/tel_tv"
-            android:layout_width="match_parent"
+            android:id="@+id/address_tv"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin"
-            tools:text="tel_tv"/>
+            android:layout_gravity="start"
+            style="@style/major_detail_text_style"
+            tools:text="address_tv"/>
         <TextView
             android:id="@+id/homepage_tv"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin"
+            android:layout_gravity="start"
+            style="@style/major_detail_text_style"
             tools:text="homepage_tv"/>
         <TextView
-            android:id="@+id/email_tv"
-            android:layout_width="match_parent"
+            android:id="@+id/tel_tv"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin"
+            android:layout_gravity="start"
+            style="@style/major_detail_text_style"
+            tools:text="tel_tv"/>
+        <TextView
+            android:id="@+id/email_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin"
+            android:layout_gravity="start"
+            style="@style/major_detail_text_style"
             tools:text="email_tv"/>
         <TextView
             android:id="@+id/attr01_tv"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin"
+            android:layout_gravity="start"
+            style="@style/minor_detail_text_style"
             tools:text="attr01_tv"/>
         <TextView
             android:id="@+id/attr02_tv"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin"
+            android:layout_gravity="start"
+            style="@style/minor_detail_text_style"
             tools:text="attr02_tv"/>
         <TextView
             android:id="@+id/attr03_tv"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin"
+            android:layout_gravity="start"
+            style="@style/minor_detail_text_style"
             tools:text="attr03_tv"/>
         <TextView
             android:id="@+id/attr04_tv"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin"
+            android:layout_gravity="start"
+            style="@style/minor_detail_text_style"
             tools:text="attr04_tv"/>
         <TextView
             android:id="@+id/attr05_tv"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin"
+            android:layout_gravity="start"
+            style="@style/minor_detail_text_style"
             tools:text="attr05_tv"/>
     </LinearLayout>
 </ScrollView>

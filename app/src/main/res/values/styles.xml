@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name = "major_title_text_style">
+        <item name = "android:textSize">@dimen/major_title_text_size</item>
+        <item name = "android:textColor">@color/major_text_color</item>
+        <item name = "android:maxWidth">@dimen/max_text_width</item>
+        <item name="android:singleLine">true</item>
+        <item name = "android:ellipsize">marquee</item>
+        <item name="android:focusable">true</item>
+        <item name="android:marqueeRepeatLimit">marquee_forever</item>
+    </style>
+
+    <style name = "minor_title_text_style">
+        <item name = "android:textSize">@dimen/minor_title_text_size</item>
+        <item name = "android:textColor">@color/minor_text_color</item>
+        <item name = "android:maxWidth">@dimen/max_text_width</item>
+        <item name="android:singleLine">true</item>
+        <item name = "android:ellipsize">marquee</item>
+        <item name="android:focusable">true</item>
+        <item name="android:marqueeRepeatLimit">marquee_forever</item>
+    </style>
+
+    <style name = "major_detail_text_style">
+        <item name = "android:textSize">@dimen/major_detail_text_size</item>
+        <item name = "android:textColor">@color/major_text_color</item>
+        <item name = "android:breakStrategy">high_quality</item>
+    </style>
+
+    <style name = "minor_detail_text_style">
+        <item name = "android:textSize">@dimen/minor_detail_text_size</item>
+        <item name = "android:textColor">@color/minor_text_color</item>
+        <item name = "android:breakStrategy">high_quality</item>
+    </style>
+</resources>

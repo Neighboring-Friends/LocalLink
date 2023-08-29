@@ -17,6 +17,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
+            android:maxWidth="@dimen/major_image_size"
+            android:maxHeight="@dimen/major_image_size"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -26,6 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:gravity="end"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
@@ -34,11 +37,13 @@
                 android:id="@+id/name_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/major_title_text_style"
                 tools:text="name"/>
             <TextView
                 android:id="@+id/sub_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/minor_title_text_style"
                 tools:text="sub"/>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

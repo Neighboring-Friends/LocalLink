@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="major_image_size">200dp</dimen>
-    <dimen name="major_text_size">25sp</dimen>
-    <dimen name="minor_text_size">15sp</dimen>
+    <dimen name="minor_image_size">100dp</dimen>
+
+    <dimen name="major_title_text_size">18sp</dimen>
+    <dimen name="minor_title_text_size">13sp</dimen>
+    <dimen name="major_detail_text_size">15sp</dimen>
+    <dimen name="minor_detail_text_size">11sp</dimen>
+    <dimen name="max_text_width">150dp</dimen>
+
     <dimen name="padding">10dp</dimen>
     <dimen name="margin">5dp</dimen>
+
 </resources>

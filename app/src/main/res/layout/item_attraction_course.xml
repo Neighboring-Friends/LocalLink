@@ -18,16 +18,19 @@
             android:id="@+id/attraction_course_name_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/major_title_text_style"
             tools:text="name"/>
         <TextView
             android:id="@+id/attraction_course_distance_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/minor_title_text_style"
             tools:text="distance"/>
         <TextView
             android:id="@+id/attraction_course_time_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/minor_title_text_style"
             tools:text="time"/>
     </LinearLayout>
 

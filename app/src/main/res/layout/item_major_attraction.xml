@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:padding="@dimen/padding">
 
     <ImageView
         android:id="@+id/attract_image_view"
@@ -28,14 +29,13 @@
             android:id="@+id/attract_name_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/major_text_size"
-            android:textColor="@color/black"
+            style="@style/major_title_text_style"
             tools:text="name"/>
         <TextView
             android:id="@+id/attract_sub_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/minor_text_size"
+            style="@style/minor_title_text_style"
             tools:text="sub"/>
     </LinearLayout>
 

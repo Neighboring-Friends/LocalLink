@@ -36,5 +36,30 @@ class AttractionDetailFragment(val data: Attraction) : Fragment(R.layout.fragmen
             attr04Tv.text = data.attr04
             attr05Tv.text = data.attr05
         }
+
+        binding.apply {
+            if (data.attractName == "")
+                attractNameTv.visibility = View.GONE
+            if (data.address == "")
+                addressTv.visibility = View.GONE
+            if (data.attractContents == "")
+                attractContentsTv.visibility = View.GONE
+            if (data.tel == "")
+                telTv.visibility = View.GONE
+            if (data.email == "")
+                emailTv.visibility = View.GONE
+            if (data.homepage == "")
+                homepageTv.visibility = View.GONE
+            if (data.attr01 == "")
+                attr01Tv.visibility = View.GONE
+            if (data.attr02 == "")
+                attr02Tv.visibility = View.GONE
+            if (data.attr03 == "")
+                attr03Tv.visibility = View.GONE
+            if (data.attr04 == "")
+                attr04Tv.visibility = View.GONE
+            if (data.attr05 == "")
+                attr05Tv.visibility = View.GONE
+        }
     }
 }
