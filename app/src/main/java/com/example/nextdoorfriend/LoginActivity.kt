@@ -11,6 +11,7 @@ import com.example.nextdoorfriend.databinding.ActivityLoginBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.messaging.ktx.messaging
 
 class LoginActivity : AppCompatActivity() {
 
@@ -55,25 +56,28 @@ class LoginActivity : AppCompatActivity() {
 
             Firebase.auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
-                    val currentUser =   Firebase.auth.currentUser
+                    val currentUser = Firebase.auth.currentUser
                     if (task.isSuccessful && currentUser != null) {
                         val userId = currentUser.uid
 
-                        val user = mutableMapOf<String, Any>()
-                        user["userId"] = userId
-                        user["username"] = email
+                        Firebase.messaging.token.addOnCompleteListener {
+                            val token = it.result
+                            val user = mutableMapOf<String, Any>()
+                            user["userId"] = userId
+                            user["username"] = email
+                            user["fcmToken"] = token
 
-                        Firebase.database(DB_URL).reference.child(DB_USERS).child(userId).updateChildren(user)
+                            Firebase.database(DB_URL).reference.child(DB_USERS).child(userId)
+                                .updateChildren(user)
 
-                        Toast.makeText(this, "저장완료.", Toast.LENGTH_SHORT).show()
-
-                        val intent = Intent(this, MainActivity::class.java)
-                        startActivity(intent)
-                        finish()
+                            val intent = Intent(this, MainActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        }
                     } else {
-                        Log.e("LoginActivity", task.exception.toString())
                         Toast.makeText(this, "로그인에 실패했습니다.", Toast.LENGTH_SHORT).show()
                     }
+
                 }
         }
     }

@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Dirtfy"
         android:usesCleartextTraffic="true"
-        tools:targetApi="31">
+        tools:targetApi="33">
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -28,11 +28,30 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
         </activity>
+
+        <service
+            android:name=".MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/default_notification_channel_id" />
+
 
         <activity
             android:name=".attraction.AttractionActivity"
             android:exported="false"/>
+        <activity
+            android:name=".chatdetail.ChatActivity" />
         <activity
             android:name=".attraction.AttractionDetailActivity"
             android:exported="false"/>
