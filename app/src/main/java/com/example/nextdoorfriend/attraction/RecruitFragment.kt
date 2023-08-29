@@ -5,21 +5,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.nextdoorfriend.R
 import com.example.nextdoorfriend.databinding.FragmentRecruitBinding
-import com.example.quoridor.adapter.AttractionCourseRecyclerViewAdaptor
+import com.example.nextdoorfriend.attraction.adaptor.MinorAttractionRecyclerViewAdaptor
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class RecruitFragment : Fragment(R.layout.fragment_attraction_detail) {
+class RecruitFragment : Fragment(R.layout.fragment_recruit) {
 
     private lateinit var activity: AttractionDetailActivity
 
-    private lateinit var binding: FragmentRecruitBinding
     private val attractionLoader by lazy {
         AttractionLoader(activity)
     }
@@ -32,20 +30,12 @@ class RecruitFragment : Fragment(R.layout.fragment_attraction_detail) {
         activity = context as AttractionDetailActivity
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_recruit, container, false)
-        return binding.root
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val binding = FragmentRecruitBinding.bind(view)
 
         binding.minorAttractionRecyclerView.apply {
-            adapter = AttractionCourseRecyclerViewAdaptor(activity, majorAttractionList)
+            adapter = MinorAttractionRecyclerViewAdaptor(activity, majorAttractionList)
         }
 
         CoroutineScope(Dispatchers.IO)

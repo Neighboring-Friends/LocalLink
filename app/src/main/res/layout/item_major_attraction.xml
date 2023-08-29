@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/attract_image_view"
         android:layout_width="0dp"
-        android:layout_height="@dimen/major_image_height"
+        android:layout_height="@dimen/major_image_size"
         android:scaleType="centerCrop"
         app:layout_constraintDimensionRatio="3:4"
         app:layout_constraintEnd_toEndOf="parent"

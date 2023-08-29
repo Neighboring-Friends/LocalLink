@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
-
-    <data>
-        <variable
-            name="item"
-            type="com.example.nextdoorfriend.attraction.Attraction" />
-    </data>
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
         android:padding="@dimen/padding">
@@ -23,97 +19,71 @@
             android:minWidth="300dp"
             android:src="@drawable/ic_launcher_background"/>
 
-        <ScrollView
+        <TextView
+            android:id="@+id/address_tv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="@dimen/padding">
-
-                <TextView
-                    android:id="@+id/address_tv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{item.address}"
-                    android:layout_margin="@dimen/margin"
-                    tools:text="address_tv"/>
-                <TextView
-                    android:id="@+id/attractName_tv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{item.attractName}"
-                    android:layout_margin="@dimen/margin"
-                    tools:text="attractName_tv"/>
-                <TextView
-                    android:id="@+id/attractContents_tv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{item.attractContents}"
-                    android:layout_margin="@dimen/margin"
-                    tools:text="attractContents_tv"/>
-                <TextView
-                    android:id="@+id/tel_tv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/margin"
-                    android:text="@{item.tel}"
-                    tools:text="tel_tv"/>
-                <TextView
-                    android:id="@+id/homepage_tv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{item.homepage}"
-                    android:layout_margin="@dimen/margin"
-                    tools:text="homepage_tv"/>
-                <TextView
-                    android:id="@+id/email_tv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{item.email}"
-                    android:layout_margin="@dimen/margin"
-                    tools:text="email_tv"/>
-                <TextView
-                    android:id="@+id/attr01_tv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{item.attr01}"
-                    android:layout_margin="@dimen/margin"
-                    tools:text="attr01_tv"/>
-                <TextView
-                    android:id="@+id/attr02_tv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{item.attr02}"
-                    android:layout_margin="@dimen/margin"
-                    tools:text="attr02_tv"/>
-                <TextView
-                    android:id="@+id/attr03_tv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{item.attr03}"
-                    android:layout_margin="@dimen/margin"
-                    tools:text="attr03_tv"/>
-                <TextView
-                    android:id="@+id/attr04_tv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{item.attr04}"
-                    android:layout_margin="@dimen/margin"
-                    tools:text="attr04_tv"/>
-                <TextView
-                    android:id="@+id/attr05_tv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{item.attr05}"
-                    android:layout_margin="@dimen/margin"
-                    tools:text="attr05_tv"/>
-            </LinearLayout>
-        </ScrollView>
-
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin"
+            tools:text="address_tv"/>
+        <TextView
+            android:id="@+id/attractName_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin"
+            tools:text="attractName_tv"/>
+        <TextView
+            android:id="@+id/attractContents_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin"
+            tools:text="attractContents_tv"/>
+        <TextView
+            android:id="@+id/tel_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin"
+            tools:text="tel_tv"/>
+        <TextView
+            android:id="@+id/homepage_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin"
+            tools:text="homepage_tv"/>
+        <TextView
+            android:id="@+id/email_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin"
+            tools:text="email_tv"/>
+        <TextView
+            android:id="@+id/attr01_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin"
+            tools:text="attr01_tv"/>
+        <TextView
+            android:id="@+id/attr02_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin"
+            tools:text="attr02_tv"/>
+        <TextView
+            android:id="@+id/attr03_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin"
+            tools:text="attr03_tv"/>
+        <TextView
+            android:id="@+id/attr04_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin"
+            tools:text="attr04_tv"/>
+        <TextView
+            android:id="@+id/attr05_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin"
+            tools:text="attr05_tv"/>
     </LinearLayout>
-
-</layout>
+</ScrollView>

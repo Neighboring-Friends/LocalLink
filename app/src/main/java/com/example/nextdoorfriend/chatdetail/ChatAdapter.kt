@@ -4,13 +4,10 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
-
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.nextdoorfriend.chatlist.ChatRoomItem
 import com.example.nextdoorfriend.databinding.ItemChatBinding
-import com.example.nextdoorfriend.databinding.ItemChatroomBinding
 import com.example.nextdoorfriend.userlist.UserItem
 
 class ChatAdapter : ListAdapter<ChatItem, ChatAdapter.ViewHolder>(differ) {

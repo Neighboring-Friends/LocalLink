@@ -10,6 +10,7 @@ import com.google.android.gms.maps.model.LatLng
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.async
 import kotlinx.coroutines.withContext
 import org.w3c.dom.Document
@@ -18,11 +19,13 @@ import org.w3c.dom.NodeList
 import java.net.HttpURLConnection
 import java.net.URL
 import java.util.Locale
+import java.util.Locale.filter
 import javax.xml.parsers.DocumentBuilderFactory
 
 class AttractionLoader(val context: Context) {
 
     var totalCount: Int = 0
+    val list = mutableListOf<Attraction>()
 
     companion object {
         val BASE = "https://tour.daegu.go.kr/openapi-data/service/rest/getTourKorAttract"
@@ -32,8 +35,6 @@ class AttractionLoader(val context: Context) {
         val sg_apim = "2ug8Dm9qNBfD32JLZGPN64f3EoTlkpD8kSOHWfXpyrY"
 
         val TAG = "Dirtfy"
-
-        val list = mutableListOf<Attraction>()
     }
 
     private fun String.replaceSign(): String {
@@ -79,7 +80,7 @@ class AttractionLoader(val context: Context) {
         }
     }
 
-    fun init(): Deferred<Unit> {
+    private fun init(): Deferred<Unit> {
         return CoroutineScope(Dispatchers.IO).async {
             val conn = getUrlConnection(1).await()
 
@@ -99,6 +100,8 @@ class AttractionLoader(val context: Context) {
 
     fun getAll(): Deferred<Unit> {
         return CoroutineScope(Dispatchers.IO).async {
+            init().await()
+
             val conn = getUrlConnection(1, totalCount).await()
 
             val factory = DocumentBuilderFactory.newInstance()
@@ -108,9 +111,6 @@ class AttractionLoader(val context: Context) {
                     builder.parse(conn.inputStream)
                 }
             val order: Element = doc.documentElement
-
-            val totalCountList: NodeList = order.getElementsByTagName("totalCount")
-            totalCount = totalCountList.item(0).firstChild.nodeValue.toInt()
 
             val itemList: NodeList = order.getElementsByTagName("item")
             val addressList: NodeList = order.getElementsByTagName("address")
@@ -157,9 +157,14 @@ class AttractionLoader(val context: Context) {
         }
     }
 
-    fun load(index: Int): Deferred<Attraction> {
+    fun getAllWithFilter(filter: (Attraction) -> Boolean,
+                         eachJobBuilder: (Attraction) -> Job,
+                         afterGeocodingJobBuilder: (Attraction) -> Job
+    ): Deferred<Unit> {
         return CoroutineScope(Dispatchers.IO).async {
-            val conn = getUrlConnection(index).await()
+            init().await()
+
+            val conn = getUrlConnection(1, totalCount).await()
 
             val factory = DocumentBuilderFactory.newInstance()
             val builder = factory.newDocumentBuilder()
@@ -169,8 +174,192 @@ class AttractionLoader(val context: Context) {
                 }
             val order: Element = doc.documentElement
 
-            val totalCountList: NodeList = order.getElementsByTagName("totalCount")
-            totalCount = totalCountList.item(0).firstChild.nodeValue.toInt()
+            val itemList: NodeList = order.getElementsByTagName("item")
+            val addressList: NodeList = order.getElementsByTagName("address")
+            val attractNameList: NodeList = order.getElementsByTagName("attractname")
+            val attractContentsList: NodeList = order.getElementsByTagName("attractcontents")
+            val telList: NodeList = order.getElementsByTagName("tel")
+            val homepageList: NodeList = order.getElementsByTagName("homepage")
+            val emailList: NodeList = order.getElementsByTagName("email")
+            val attr1List: NodeList = order.getElementsByTagName("attr01")
+            val attr2List: NodeList = order.getElementsByTagName("attr02")
+            val attr3List: NodeList = order.getElementsByTagName("attr03")
+            val attr4List: NodeList = order.getElementsByTagName("attr04")
+            val attr5List: NodeList = order.getElementsByTagName("attr05")
+
+            val attractList: MutableList<Attraction> = mutableListOf()
+
+            for (i in 0 until itemList.length) {
+                val address: String = addressList.item(i).firstChild.nodeValue.replaceSign()
+                val attractName: String = attractNameList.item(i).firstChild.nodeValue.replaceSign()
+                val attractContents: String = attractContentsList.item(i).firstChild.nodeValue.replaceSign()
+                val tel: String = telList.item(i).firstChild?.nodeValue?:"".replaceSign()
+                val homepage: String = homepageList.item(i).firstChild?.nodeValue?:"".replaceSign()
+                val email: String = emailList.item(i).firstChild?.nodeValue?:"".replaceSign()
+                val attr01: String = attr1List.item(i).firstChild?.nodeValue?:"".replaceSign()
+                val attr02: String = attr2List.item(i).firstChild?.nodeValue?:"".replaceSign()
+                val attr03: String = attr3List.item(i).firstChild?.nodeValue?:"".replaceSign()
+                val attr04: String = attr4List.item(i).firstChild?.nodeValue?:"".replaceSign()
+                val attr05: String = attr5List.item(i).firstChild?.nodeValue?:"".replaceSign()
+
+                val item = Attraction(
+                    null, address, attractName, attractContents,
+                    tel, homepage, email,
+                    attr01, attr02, attr03, attr04, attr05)
+
+                if (filter(item)) {
+                    attractList += item
+                    eachJobBuilder(item).start()
+                }
+            }
+
+            for (attraction in attractList) {
+                geoCoding(attraction)
+                afterGeocodingJobBuilder(attraction).start()
+            }
+
+            Log.d(TAG, "getAllWithFilter end")
+        }
+    }
+
+    fun getSome(count: Int,
+                eachJobBuilder: (Attraction) -> Job,
+                afterGeocodingJobBuilder: (Attraction) -> Job
+    ): Deferred<Unit> {
+        return CoroutineScope(Dispatchers.IO).async {
+            val conn = getUrlConnection(1, count).await()
+
+            val factory = DocumentBuilderFactory.newInstance()
+            val builder = factory.newDocumentBuilder()
+            val doc: Document =
+                withContext(Dispatchers.IO) {
+                    builder.parse(conn.inputStream)
+                }
+            val order: Element = doc.documentElement
+
+            val itemList: NodeList = order.getElementsByTagName("item")
+            val addressList: NodeList = order.getElementsByTagName("address")
+            val attractNameList: NodeList = order.getElementsByTagName("attractname")
+            val attractContentsList: NodeList = order.getElementsByTagName("attractcontents")
+            val telList: NodeList = order.getElementsByTagName("tel")
+            val homepageList: NodeList = order.getElementsByTagName("homepage")
+            val emailList: NodeList = order.getElementsByTagName("email")
+            val attr1List: NodeList = order.getElementsByTagName("attr01")
+            val attr2List: NodeList = order.getElementsByTagName("attr02")
+            val attr3List: NodeList = order.getElementsByTagName("attr03")
+            val attr4List: NodeList = order.getElementsByTagName("attr04")
+            val attr5List: NodeList = order.getElementsByTagName("attr05")
+
+            val attractList: MutableList<Attraction> = mutableListOf()
+
+            for (i in 0 until itemList.length) {
+                val address: String = addressList.item(i).firstChild.nodeValue.replaceSign()
+                val attractName: String = attractNameList.item(i).firstChild.nodeValue.replaceSign()
+                val attractContents: String = attractContentsList.item(i).firstChild.nodeValue.replaceSign()
+                val tel: String = telList.item(i).firstChild?.nodeValue?:"".replaceSign()
+                val homepage: String = homepageList.item(i).firstChild?.nodeValue?:"".replaceSign()
+                val email: String = emailList.item(i).firstChild?.nodeValue?:"".replaceSign()
+                val attr01: String = attr1List.item(i).firstChild?.nodeValue?:"".replaceSign()
+                val attr02: String = attr2List.item(i).firstChild?.nodeValue?:"".replaceSign()
+                val attr03: String = attr3List.item(i).firstChild?.nodeValue?:"".replaceSign()
+                val attr04: String = attr4List.item(i).firstChild?.nodeValue?:"".replaceSign()
+                val attr05: String = attr5List.item(i).firstChild?.nodeValue?:"".replaceSign()
+
+                val item = Attraction(
+                    null, address, attractName, attractContents,
+                    tel, homepage, email,
+                    attr01, attr02, attr03, attr04, attr05)
+
+                attractList += item
+                eachJobBuilder(item).start()
+            }
+
+            for (attraction in attractList) {
+                geoCoding(attraction)
+                afterGeocodingJobBuilder(attraction).start()
+            }
+
+            Log.d(TAG, "getSome end")
+        }
+    }
+
+    fun getSomeWithFilter(count: Int,
+                          filter: (Attraction) -> Boolean,
+                          eachJobBuilder: (Attraction) -> Job,
+                          afterGeocodingJobBuilder: (Attraction) -> Job
+    ): Deferred<Unit> {
+        return CoroutineScope(Dispatchers.IO).async {
+            val conn = getUrlConnection(1, count).await()
+
+            val factory = DocumentBuilderFactory.newInstance()
+            val builder = factory.newDocumentBuilder()
+            val doc: Document =
+                withContext(Dispatchers.IO) {
+                    builder.parse(conn.inputStream)
+                }
+            val order: Element = doc.documentElement
+
+            val itemList: NodeList = order.getElementsByTagName("item")
+            val addressList: NodeList = order.getElementsByTagName("address")
+            val attractNameList: NodeList = order.getElementsByTagName("attractname")
+            val attractContentsList: NodeList = order.getElementsByTagName("attractcontents")
+            val telList: NodeList = order.getElementsByTagName("tel")
+            val homepageList: NodeList = order.getElementsByTagName("homepage")
+            val emailList: NodeList = order.getElementsByTagName("email")
+            val attr1List: NodeList = order.getElementsByTagName("attr01")
+            val attr2List: NodeList = order.getElementsByTagName("attr02")
+            val attr3List: NodeList = order.getElementsByTagName("attr03")
+            val attr4List: NodeList = order.getElementsByTagName("attr04")
+            val attr5List: NodeList = order.getElementsByTagName("attr05")
+
+            val attractList: MutableList<Attraction> = mutableListOf()
+
+            for (i in 0 until itemList.length) {
+                val address: String = addressList.item(i).firstChild.nodeValue.replaceSign()
+                val attractName: String = attractNameList.item(i).firstChild.nodeValue.replaceSign()
+                val attractContents: String = attractContentsList.item(i).firstChild.nodeValue.replaceSign()
+                val tel: String = telList.item(i).firstChild?.nodeValue?:"".replaceSign()
+                val homepage: String = homepageList.item(i).firstChild?.nodeValue?:"".replaceSign()
+                val email: String = emailList.item(i).firstChild?.nodeValue?:"".replaceSign()
+                val attr01: String = attr1List.item(i).firstChild?.nodeValue?:"".replaceSign()
+                val attr02: String = attr2List.item(i).firstChild?.nodeValue?:"".replaceSign()
+                val attr03: String = attr3List.item(i).firstChild?.nodeValue?:"".replaceSign()
+                val attr04: String = attr4List.item(i).firstChild?.nodeValue?:"".replaceSign()
+                val attr05: String = attr5List.item(i).firstChild?.nodeValue?:"".replaceSign()
+
+                val item = Attraction(
+                    null, address, attractName, attractContents,
+                    tel, homepage, email,
+                    attr01, attr02, attr03, attr04, attr05)
+
+                if (!filter(item)) continue
+
+                attractList += item
+                eachJobBuilder(item).start()
+            }
+
+            for (attraction in attractList) {
+                geoCoding(attraction)
+                afterGeocodingJobBuilder(attraction).start()
+            }
+
+            Log.d(TAG, "getSomeWithFilter end")
+        }
+    }
+
+    fun load(index: Int): Deferred<Attraction> {
+        return CoroutineScope(Dispatchers.IO).async {
+            init().await()
+
+            val conn = getUrlConnection(index).await()
+
+            val factory = DocumentBuilderFactory.newInstance()
+            val builder = factory.newDocumentBuilder()
+            val doc: Document =
+                withContext(Dispatchers.IO) {
+                    builder.parse(conn.inputStream)
+                }
+            val order: Element = doc.documentElement
 
             val addressList: NodeList = order.getElementsByTagName("address")
             val attractNameList: NodeList = order.getElementsByTagName("attractname")
@@ -208,6 +397,8 @@ class AttractionLoader(val context: Context) {
     }
     fun load(index: Int, count: Int): Deferred<Array<Attraction>> {
         return CoroutineScope(Dispatchers.IO).async {
+            init().await()
+
             val conn = getUrlConnection(index, count).await()
 
             val factory = DocumentBuilderFactory.newInstance()
@@ -217,9 +408,6 @@ class AttractionLoader(val context: Context) {
                     builder.parse(conn.inputStream)
                 }
             val order: Element = doc.documentElement
-
-            val totalCountList: NodeList = order.getElementsByTagName("totalCount")
-            totalCount = totalCountList.item(0).firstChild.nodeValue.toInt()
 
             val itemList: NodeList = order.getElementsByTagName("item")
             val addressList: NodeList = order.getElementsByTagName("address")

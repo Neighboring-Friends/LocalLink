@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
     android:padding="@dimen/padding">
 
     <ImageView
-        android:id="@+id/attraction_image_view"
-        android:layout_width="@dimen/major_image_height"
-        android:layout_height="@dimen/major_image_height"
+        android:id="@+id/item_item_attraction_image_view"
+        android:layout_width="@dimen/major_image_size"
+        android:layout_height="@dimen/major_image_size"
         android:src="@drawable/ic_launcher_background"/>
+
+    <TextView
+        android:id="@+id/item_item_attraction_name_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="name"/>
 
 </LinearLayout>

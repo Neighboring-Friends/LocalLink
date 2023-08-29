@@ -2,13 +2,10 @@ package com.example.nextdoorfriend.chatlist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nextdoorfriend.databinding.ItemChatroomBinding
-import com.example.nextdoorfriend.databinding.ItemUserBinding
-import com.example.nextdoorfriend.userlist.UserItem
 
 class ChatListAdapter(private val onClick: (ChatRoomItem)-> Unit) : ListAdapter<ChatRoomItem, ChatListAdapter.ViewHolder>(differ) {
 

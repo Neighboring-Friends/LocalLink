@@ -1,4 +1,4 @@
-package com.example.quoridor.adapter
+package com.example.nextdoorfriend.attraction.adaptor
 
 import android.content.Context
 import android.content.Intent
@@ -14,18 +14,17 @@ import com.example.nextdoorfriend.databinding.ItemMajorAttractionBinding
 
 class MajorAttractionRecyclerViewAdaptor(val context: Context, val itemList: MutableList<Attraction>): RecyclerView.Adapter<MajorAttractionRecyclerViewAdaptor.ViewHolder>() {
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val binding by lazy {
-            ItemMajorAttractionBinding.bind(itemView)
+    inner class ViewHolder(val binding: ItemMajorAttractionBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(data: Attraction) {
+            binding.attractNameTextView.text = data.attractName
+            binding.attractSubTextView.text = data.address
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater
-            .from(parent.context)
-            .inflate(R.layout.item_major_attraction, parent, false)
+        val binding = ItemMajorAttractionBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
-        val viewHolder = ViewHolder(view)
+        val viewHolder = ViewHolder(binding)
 
         viewHolder.itemView.setOnClickListener {
             val intent = Intent(context, AttractionDetailActivity::class.java)
@@ -37,13 +36,7 @@ class MajorAttractionRecyclerViewAdaptor(val context: Context, val itemList: Mut
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val data = itemList[position]
-
-        val name = data.attractName
-        val address = data.address
-
-        holder.binding.attractNameTextView.text = name
-        holder.binding.attractSubTextView.text = address
+        holder.bind(itemList[position])
     }
 
     override fun getItemCount(): Int {

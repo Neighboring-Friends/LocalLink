@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.Fragment
 import com.example.nextdoorfriend.LoginActivity
 import com.example.nextdoorfriend.R
@@ -14,7 +13,6 @@ import com.example.nextdoorfriend.userlist.UserItem
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import java.security.Key
 
 class MyPageFragment : Fragment(R.layout.fragment_mypage) {
 

@@ -1,5 +1,6 @@
 package com.example.nextdoorfriend.chatdetail
 
+import Key
 import Key.Companion.DB_CHATS
 import android.os.Bundle
 import android.widget.Toast

@@ -1,11 +1,12 @@
 package com.example.nextdoorfriend
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.nextdoorfriend.attraction.AttractionActivity
+import com.example.nextdoorfriend.attractionCourse.AttractionCourseActivity
 import com.example.nextdoorfriend.chatlist.ChatListFragment
-import com.example.nextdoorfriend.databinding.ActivityLoginBinding
 import com.example.nextdoorfriend.databinding.ActivityMainBinding
 import com.example.nextdoorfriend.mypage.MyPageFragment
 import com.example.nextdoorfriend.userlist.UserFragment
@@ -47,6 +48,14 @@ class MainActivity : AppCompatActivity() {
                     return@setOnItemSelectedListener false
                 }
             }
+        }
+
+        binding.testBtn.setOnClickListener {
+            startActivity(Intent(this, AttractionActivity::class.java))
+        }
+
+        binding.minseokBtn.setOnClickListener {
+            startActivity(Intent(this, AttractionCourseActivity::class.java))
         }
     }
 

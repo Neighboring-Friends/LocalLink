@@ -1,7 +1,7 @@
 package com.example.nextdoorfriend.attraction
 
 import android.os.Bundle
-import android.util.Log
+import android.text.TextUtils.replace
 import androidx.appcompat.app.AppCompatActivity
 import com.example.nextdoorfriend.R
 import com.example.nextdoorfriend.attraction.Func.getAny
@@ -33,7 +33,10 @@ class AttractionDetailActivity: AppCompatActivity() {
 
         attraction = intent.getAny("attraction", Attraction::class.java)
 
-        binding.item = attraction
+        binding.apply {
+            nameTextView.text = attraction.attractName
+            subTextView.text = attraction.address
+        }
 
         supportFragmentManager.beginTransaction()
             .apply {
