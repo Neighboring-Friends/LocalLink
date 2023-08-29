@@ -15,6 +15,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.nextdoorfriend.chatlist.ChatListFragment
 import com.example.nextdoorfriend.databinding.ActivityMainBinding
+import com.example.nextdoorfriend.home.HomeFragment
 import com.example.nextdoorfriend.mypage.MyPageFragment
 import com.example.nextdoorfriend.userlist.UserFragment
 import com.google.firebase.auth.ktx.auth
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity() {
     private val userFragment = UserFragment()
     private val chatListFragment = ChatListFragment()
     private val myPageFragment = MyPageFragment()
+    private val homeFragment = HomeFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +47,11 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
+                R.id.HomeList -> {
+                replaceFragment(homeFragment)
+                supportActionBar?.title = "홈"
+                return@setOnItemSelectedListener true
+            }
                 R.id.userList -> {
                     replaceFragment(userFragment)
                     supportActionBar?.title = "친구"
