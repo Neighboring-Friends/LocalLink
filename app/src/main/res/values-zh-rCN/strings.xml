@@ -14,6 +14,14 @@
     <string name="write_post_activity_extra_content">附加信息</string>
     <string name="write_post_activity_extra_content_hint">还有</string>
     <string name="write_post_activity_post_button">注册</string>
+    <string name="dialog_name_label">名气</string>
+    <string name="dialog_birth_label">出生地</string>
+    <string name="dialog_language_label">语言</string>
+    <string name="dialog_food_type_label">食品类型</string>
+    <string name="dialog_detail_label">细枝末节</string>
+    <string name="dialog_language_value">英格力</string>
+    <string name="dialog_food_type_value">韩国饮食</string>
+    <string name="dialog_submit_button">申请</string>
     <string name="korean">🇰🇷韩国语</string>
     <string name="english">🇺🇸英语</string>
     <string name="chinese">🇨🇳中文</string>

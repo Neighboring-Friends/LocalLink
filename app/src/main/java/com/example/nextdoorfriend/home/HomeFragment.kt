@@ -38,7 +38,7 @@ class HomeFragment : Fragment(R.layout.activity_homeviewpager) {
 
         val layoutManager = LinearLayoutManager(activity)
         binding.recyclerview.layoutManager = layoutManager
-        val adapter = MyAdapter(datas)
+        val adapter = MyAdapter(this.requireContext(), datas)
         binding.recyclerview.adapter = adapter
         binding.recyclerview.addItemDecoration(MyDecoration(activity as Context))
 

@@ -18,6 +18,20 @@
     <string name="write_post_activity_extra_content_hint">그리고..</string>
     <string name="write_post_activity_post_button">등록</string>
 
+    <string name="dialog_name_label">name</string>
+    <string name="dialog_birth_label">birth</string>
+    <string name="dialog_language_label">language</string>
+    <string name="dialog_food_type_label">food type</string>
+    <string name="dialog_detail_label">detail</string>
+
+    <string name="dialog_name_value" translatable="false">David</string>
+    <string name="dialog_birth_value" translatable="false">2000-07-08</string>
+    <string name="dialog_language_value">english</string>
+    <string name="dialog_food_type_value">korean food</string>
+    <string name="dialog_detail_value" translatable="false"></string>
+    <string name="dialog_submit_button">신청</string>
+    <string name="dialog_submit_message" translatable="false">send</string>
+
     <string name="korean">한국어</string>
     <string name="english">English</string>
     <string name="chinese">中文</string>

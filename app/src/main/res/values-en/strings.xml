@@ -14,6 +14,14 @@
     <string name="write_post_activity_extra_content">Additional Information</string>
     <string name="write_post_activity_extra_content_hint">And..</string>
     <string name="write_post_activity_post_button">Registration</string>
+    <string name="dialog_name_label">name</string>
+    <string name="dialog_birth_label">birth</string>
+    <string name="dialog_language_label">language</string>
+    <string name="dialog_food_type_label">food type</string>
+    <string name="dialog_detail_label">detail</string>
+    <string name="dialog_language_value">english</string>
+    <string name="dialog_food_type_value">koraen food</string>
+    <string name="dialog_submit_button">Application</string>
     <string name="korean">🇰🇷korean</string>
     <string name="english">🇺🇸English</string>
     <string name="chinese">🇨🇳Chinese</string>
