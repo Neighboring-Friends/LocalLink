@@ -13,13 +13,14 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.Locale
 
 class AttractionCourseFragment : Fragment(R.layout.fragment_attraction_course) {
 
     private lateinit var activity: AttractionCourseActivity
 
     private val attractionCourseLoader by lazy {
-        AttractionCourseLoader()
+        AttractionCourseLoader(this.requireContext())
     }
 
     private val attractionCourseList = mutableListOf<AttractionCourse>()

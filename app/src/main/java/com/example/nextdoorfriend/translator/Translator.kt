@@ -11,12 +11,17 @@ class Translator {
     private val TAG = "Dirtfy"
 
     companion object {
-        private val options = TranslatorOptions.Builder()
+        private val keOptions = TranslatorOptions.Builder()
             .setSourceLanguage(TranslateLanguage.KOREAN)
             .setTargetLanguage(TranslateLanguage.ENGLISH)
             .build()
+        private val koreanEnglishTranslator = Translation.getClient(keOptions)
 
-        private val koreanEnglishTranslator = Translation.getClient(options)
+        private val kcOptions = TranslatorOptions.Builder()
+            .setSourceLanguage(TranslateLanguage.KOREAN)
+            .setTargetLanguage(TranslateLanguage.CHINESE)
+            .build()
+        private val koreanChineseTranslator = Translation.getClient(kcOptions)
     }
 
     init {
@@ -34,10 +39,27 @@ class Translator {
                 // ...
                 Log.d(TAG, "download fail")
             }
+        koreanChineseTranslator.downloadModelIfNeeded(conditions)
+            .addOnSuccessListener {
+                // Model downloaded successfully. Okay to start translating.
+                // (Set a flag, unhide the translation UI, etc.)
+                Log.d(TAG, "download success")
+            }
+            .addOnFailureListener { exception ->
+                // Model couldn’t be downloaded or other internal error.
+                // ...
+                Log.d(TAG, "download fail")
+            }
     }
 
-    fun translate(korean: String, ifSuccess: (String)->Unit, ifFail: (Exception)->Unit) {
+    fun translateE(korean: String, ifSuccess: (String)->Unit, ifFail: (Exception)->Unit) {
         koreanEnglishTranslator.translate(korean)
+            .addOnSuccessListener(ifSuccess)
+            .addOnFailureListener(ifFail)
+    }
+
+    fun translateC(korean: String, ifSuccess: (String)->Unit, ifFail: (Exception)->Unit) {
+        koreanChineseTranslator.translate(korean)
             .addOnSuccessListener(ifSuccess)
             .addOnFailureListener(ifFail)
     }

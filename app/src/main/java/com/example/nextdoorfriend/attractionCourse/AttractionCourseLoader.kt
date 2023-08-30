@@ -1,5 +1,6 @@
 package com.example.nextdoorfriend.attractionCourse
 
+import android.content.Context
 import android.util.Log
 import com.example.nextdoorfriend.attraction.AttractionLoader
 import com.example.nextdoorfriend.attraction.AttractionLoader.Companion.sg_apim
@@ -15,9 +16,10 @@ import org.w3c.dom.Element
 import org.w3c.dom.NodeList
 import java.net.HttpURLConnection
 import java.net.URL
+import java.util.Locale
 import javax.xml.parsers.DocumentBuilderFactory
 
-class AttractionCourseLoader {
+class AttractionCourseLoader(val context: Context) {
 
     var totalCount: Int = 0
     val list = mutableListOf<AttractionCourse>()

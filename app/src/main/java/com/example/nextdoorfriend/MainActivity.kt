@@ -1,7 +1,5 @@
 package com.example.nextdoorfriend
 
-
-
 import android.Manifest
 import android.content.Context
 import android.content.Intent
@@ -36,6 +34,8 @@ class MainActivity : AppCompatActivity() {
 //    private val tourFragment = TourFragment()
     private val tourFragment = AttractionFragment(this)
 
+    private var nowFragment: Fragment = homeFragment
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -55,40 +55,48 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.HomeList -> {
                     replaceFragment(homeFragment)
+                    nowFragment = homeFragment
                     supportActionBar?.title = "홈"
                     return@setOnItemSelectedListener true
                 }
                 R.id.tourList -> {
                     replaceFragment(tourFragment)
+                    nowFragment = tourFragment
                     supportActionBar?.title = "관광지"
                     return@setOnItemSelectedListener true
                 }
                 R.id.userList -> {
                     replaceFragment(userFragment)
+                    nowFragment = userFragment
                     supportActionBar?.title = "친구"
                     return@setOnItemSelectedListener true
                 }
                 R.id.chatroomList -> {
                     replaceFragment(chatListFragment)
+                    nowFragment = chatListFragment
                     supportActionBar?.title = "채팅"
                     return@setOnItemSelectedListener true
                 }
                 R.id.myPage -> {
                     replaceFragment(myPageFragment)
+                    nowFragment = myPageFragment
                     supportActionBar?.title = "마이페이지"
                     return@setOnItemSelectedListener true
                 }
                 else -> {
+                    nowFragment = homeFragment
                     return@setOnItemSelectedListener false
                 }
             }
         }
-        replaceFragment(userFragment)
+        replaceFragment(when(intent.getIntExtra("now", 0)){
+                1 -> userFragment
+                2 -> chatListFragment
+                3 -> myPageFragment
+                4 -> tourFragment
+                else -> homeFragment
+        })
         supportActionBar?.title = "친구"
-
-        binding.chineseButton.setOnClickListener {
-
-        }
 
         binding.apply {
             koreanButton.setOnClickListener {
@@ -124,6 +132,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun restartActivity() {
         val intent = intent
+        intent.putExtra("now",
+            when(nowFragment) {
+                userFragment -> 1
+                chatListFragment -> 2
+                myPageFragment -> 3
+                tourFragment -> 4
+                else -> 0
+            })
         finish()
         startActivity(intent)
     }
