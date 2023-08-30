@@ -18,7 +18,7 @@ class HomeFragment : Fragment(R.layout.activity_homeviewpager) {
         super.onViewCreated(view, savedInstanceState)
         binding = ActivityHomeviewpagerBinding.bind(view)
 
-        binding.viewPager.adapter = HomeAdapter(imageItems) // 어댑터 생성
+        binding.viewPager.adapter = HomeAdapter(this.requireContext(),imageItems) // 어댑터 생성
         binding.viewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL // 방향을 가로로
         TabLayoutMediator(
             binding.tabLayout,
