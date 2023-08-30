@@ -51,6 +51,12 @@
             android:name=".attraction.AttractionActivity"
             android:exported="false"/>
         <activity
+            android:name=".banner.FoodPeopleActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".banner.RecomendTourActivity"
+            android:exported="false"/>
+        <activity
             android:name=".chatdetail.ChatActivity" />
         <activity
             android:name=".attraction.AttractionDetailActivity"

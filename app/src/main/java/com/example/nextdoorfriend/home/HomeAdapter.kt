@@ -7,12 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nextdoorfriend.R
 import com.example.nextdoorfriend.attractionCourse.AttractionCourseActivity
+import com.example.nextdoorfriend.banner.FoodPeopleActivity
+import com.example.nextdoorfriend.banner.RecomendTourActivity
+
 import com.example.nextdoorfriend.databinding.ItemMainBannerBinding
 
-class HomeAdapter (val context: Context, val bannerList: ArrayList<HomeItem>) : RecyclerView.Adapter<HomeAdapter.PagerViewHolder>() {
+class HomeAdapter(private val context: Context, val bannerList: ArrayList<HomeItem>) : RecyclerView.Adapter<HomeAdapter.PagerViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagerViewHolder {
         return PagerViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_main_banner, parent, false))
     }
@@ -24,14 +28,31 @@ class HomeAdapter (val context: Context, val bannerList: ArrayList<HomeItem>) : 
     override fun onBindViewHolder(holder: PagerViewHolder, position: Int) {
         val currentItem = bannerList[position]
         holder.bind(currentItem)
-        if (position == 2)
-            holder.itemView.setOnClickListener {
-                context.startActivity(Intent(context, AttractionCourseActivity::class.java))
+
+        // 이미지 클릭 리스너 설정
+        holder.bannerImageView.setOnClickListener {
+            // 클릭한 이미지에 대한 처리
+            when(position){
+                0 -> {
+                    val intent = Intent(context, FoodPeopleActivity::class.java)
+                    context.startActivity(intent)
+                }
+                1 -> {
+
+                }
+                2-> {
+                    val intent = Intent(context, AttractionCourseActivity::class.java)
+                    context.startActivity(intent)
+                }
+                else ->{
+
+                }
             }
+        }
     }
 
     inner class PagerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val bannerImageView: ImageView = itemView.findViewById(R.id.banner_image)
+        val bannerImageView: ImageView = itemView.findViewById(R.id.banner_image)
         private val titleTextView: TextView = itemView.findViewById(R.id.text_title)
         private val subtitleTextView: TextView = itemView.findViewById(R.id.text_title2)
 
