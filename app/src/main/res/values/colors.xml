@@ -13,9 +13,10 @@
     <color name="minor_text_color">#7A7A7A</color>
     <color name="hint_text_color">#BEBEBE</color>
 
-    <color name="primary">#EE476F</color>
-    <color name="secondary">#F48B8B</color>
-    <color name="third">#F6ECE1</color>
+    <color name="primary1">#071952</color>
+    <color name="primary">#0B666A</color>
+    <color name="secondary">#35A29F</color>
+    <color name="third">#35A29F</color>
 
     <color name="transparent">#00FFFFFF</color>
 </resources>
