@@ -38,7 +38,8 @@ class HomeAdapter(private val context: Context, val bannerList: ArrayList<HomeIt
                     context.startActivity(intent)
                 }
                 1 -> {
-
+                    val intent = Intent(context, FoodPeopleActivity::class.java)
+                    context.startActivity(intent)
                 }
                 2-> {
                     val intent = Intent(context, AttractionCourseActivity::class.java)

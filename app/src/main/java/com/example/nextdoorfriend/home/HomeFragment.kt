@@ -1,8 +1,10 @@
 package com.example.nextdoorfriend.home
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.nextdoorfriend.R
 import com.example.nextdoorfriend.databinding.ActivityHomeviewpagerBinding
@@ -27,8 +29,21 @@ class HomeFragment : Fragment(R.layout.activity_homeviewpager) {
                 tab, position ->
             binding.viewPager.currentItem = tab.position
         }.attach()
+
+        //프레그 먼트 만들기
+        val datas = mutableListOf<String>()
+        for (i in 1..4) {
+            datas.add("I find someone to eat together $i")
+        }
+
+        val layoutManager = LinearLayoutManager(activity)
+        binding.recyclerview.layoutManager = layoutManager
+        val adapter = MyAdapter(datas)
+        binding.recyclerview.adapter = adapter
+        binding.recyclerview.addItemDecoration(MyDecoration(activity as Context))
+
     }
 
-    // 뷰 페이저에 들어갈 아이템
+
 
 }

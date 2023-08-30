@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/item_root"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:orientation="vertical"
+    android:background="@drawable/item_background2"
+    android:padding="16dp"
+    android:layout_margin="8dp">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/secondary"
+        android:textColor="@color/primary1"
+
+        android:text="모집중"
+        android:textSize="15sp"
+         />
+    />
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:gravity="end"
+        android:layout_marginEnd="20dp"
+        android:text="2023_08_30" />
+
+</LinearLayout>
+
+    <TextView
+        android:id="@+id/item_data"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:layout_weight="1"
+        android:drawableStart="@drawable/baseline_people_24"
+
+        android:drawablePadding="8dp"
+        android:textSize="16dp"
+        android:textStyle="bold" />
+
+
+</LinearLayout>
