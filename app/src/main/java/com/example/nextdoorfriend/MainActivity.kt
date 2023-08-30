@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
     private val chatListFragment = ChatListFragment()
     private val myPageFragment = MyPageFragment()
     private val homeFragment = HomeFragment()
-
+    private val tourFragment = TourFragment()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -48,10 +48,15 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.HomeList -> {
-                replaceFragment(homeFragment)
-                supportActionBar?.title = "홈"
-                return@setOnItemSelectedListener true
-            }
+                    replaceFragment(homeFragment)
+                    supportActionBar?.title = "홈"
+                    return@setOnItemSelectedListener true
+                }
+                R.id.tourList -> {
+                    replaceFragment(tourFragment)
+                    supportActionBar?.title = "관광지"
+                    return@setOnItemSelectedListener true
+                }
                 R.id.userList -> {
                     replaceFragment(userFragment)
                     supportActionBar?.title = "친구"
