@@ -16,7 +16,6 @@ class AttractionCourseRecyclerViewAdaptor(val itemList: MutableList<AttractionCo
                 attractionCourseNameTextView.text = data.courseNm
                 attractionCourseDistanceTextView.text = data.distance
                 attractionCourseTimeTextView.text = data.time
-                itemItemAttractionCourseRecyclerView.adapter = AttractionCourseItemRecyclerViewAdapter(data.tourCourse)
             }
         }
     }
@@ -28,6 +27,13 @@ class AttractionCourseRecyclerViewAdaptor(val itemList: MutableList<AttractionCo
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(itemList[position])
+        holder.binding.itemItemAttractionCourseRecyclerView.adapter =
+            AttractionCourseItemRecyclerViewAdapter(itemList[position].tourCourse,
+                when(position) {
+                    0 -> listOf(R.drawable.c11, R.drawable.c12, R.drawable.c13, R.drawable.c14)
+                    1 -> listOf(R.drawable.c21, R.drawable.c22, R.drawable.c23, R.drawable.c24, R.drawable.c25)
+                    else -> listOf(R.drawable.c31, R.drawable.c32, R.drawable.c33, R.drawable.c34, R.drawable.c35, R.drawable.c36, R.drawable.c37)
+                })
     }
 
     override fun getItemCount(): Int {

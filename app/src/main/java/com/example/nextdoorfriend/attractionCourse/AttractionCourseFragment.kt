@@ -27,7 +27,6 @@ class AttractionCourseFragment : Fragment(R.layout.fragment_attraction_course) {
     private val targetNameList =
         listOf(
             "데이트코스",
-            "근대산업거리",
             "시장여행길",
             "북구역사속으로")
 

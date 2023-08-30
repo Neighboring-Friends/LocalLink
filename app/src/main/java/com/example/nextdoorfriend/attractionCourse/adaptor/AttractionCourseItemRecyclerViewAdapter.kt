@@ -6,8 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nextdoorfriend.R
 import com.example.nextdoorfriend.databinding.ItemItemAttractionCourseBinding
+import kotlin.math.sign
 
-class AttractionCourseItemRecyclerViewAdapter(val itemList: Array<String>): RecyclerView.Adapter<AttractionCourseItemRecyclerViewAdapter.ViewHolder>() {
+class AttractionCourseItemRecyclerViewAdapter(val itemList: Array<String>, val imgList: List<Int>): RecyclerView.Adapter<AttractionCourseItemRecyclerViewAdapter.ViewHolder>() {
 
     inner class ViewHolder(val binding: ItemItemAttractionCourseBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(data: String) {
@@ -22,6 +23,8 @@ class AttractionCourseItemRecyclerViewAdapter(val itemList: Array<String>): Recy
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(itemList[position])
+        if (imgList.isNotEmpty())
+            holder.binding.itemItemAttractionImageView.setImageResource(imgList[position])
     }
 
     override fun getItemCount(): Int {

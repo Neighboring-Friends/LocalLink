@@ -77,7 +77,7 @@ class AttractionFragment : Fragment(R.layout.fragment_attraction) {
 
         getSomeJob = CoroutineScope(Dispatchers.IO).launch {
             attractionLoader.getSomeWithFilter(
-                15,
+                6,
                 {
                     it.attractName !in majorNameList
                 },

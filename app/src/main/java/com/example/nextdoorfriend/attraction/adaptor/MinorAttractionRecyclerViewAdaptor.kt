@@ -38,6 +38,12 @@ class MinorAttractionRecyclerViewAdaptor(val context: Context, val itemList: Mut
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(itemList[position])
+        holder.binding.attractImageView.setImageResource(when(position) {
+            0 -> R.drawable.n1
+            1 -> R.drawable.n2
+            2 -> R.drawable.n3
+            else -> R.drawable.n4
+        })
     }
 
     override fun getItemCount(): Int {
