@@ -1,10 +1,13 @@
 package com.example.nextdoorfriend.attraction
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.nextdoorfriend.R
+import com.example.nextdoorfriend.WritePostActivity
 import com.example.nextdoorfriend.databinding.FragmentAttractionBinding
 import com.example.nextdoorfriend.attraction.adaptor.MajorAttractionRecyclerViewAdaptor
 import com.example.nextdoorfriend.attraction.adaptor.MinorAttractionRecyclerViewAdaptor
@@ -14,9 +17,9 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class AttractionFragment : Fragment(R.layout.fragment_attraction) {
+class AttractionFragment(val activity: Activity) : Fragment(R.layout.fragment_attraction) {
 
-    private lateinit var activity: AttractionActivity
+//    private lateinit var activity: AttractionActivity
 
     private val attractionLoader by lazy {
         AttractionLoader(activity)
@@ -36,12 +39,6 @@ class AttractionFragment : Fragment(R.layout.fragment_attraction) {
     private lateinit var getAllJob: Job
     private lateinit var getSomeJob: Job
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-
-        activity = context as AttractionActivity
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentAttractionBinding.bind(view)
@@ -52,6 +49,9 @@ class AttractionFragment : Fragment(R.layout.fragment_attraction) {
         binding.minorAttractionRecyclerView.apply {
             adapter = MinorAttractionRecyclerViewAdaptor(activity, minorAttractionList)
         }
+
+        majorAttractionList.clear()
+        minorAttractionList.clear()
 
         getAllJob = CoroutineScope(Dispatchers.IO).launch {
             attractionLoader.getAllWithFilter(
@@ -93,6 +93,10 @@ class AttractionFragment : Fragment(R.layout.fragment_attraction) {
                     CoroutineScope(Dispatchers.IO).launch {  }
                 }
             ).await()
+        }
+
+        binding.writeFab.setOnClickListener {
+            startActivity(Intent(activity, WritePostActivity::class.java))
         }
     }
 

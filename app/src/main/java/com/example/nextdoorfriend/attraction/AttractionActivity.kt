@@ -10,7 +10,7 @@ class AttractionActivity: AppCompatActivity() {
     private val binding by lazy {
         ActivityAttractionBinding.inflate(layoutInflater)
     }
-    private val attractionFragment = AttractionFragment()
+    private val attractionFragment = AttractionFragment(this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)

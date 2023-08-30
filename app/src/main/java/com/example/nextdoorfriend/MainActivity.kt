@@ -13,6 +13,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.example.nextdoorfriend.attraction.AttractionFragment
 import com.example.nextdoorfriend.chatlist.ChatListFragment
 import com.example.nextdoorfriend.databinding.ActivityMainBinding
 import com.example.nextdoorfriend.home.HomeFragment
@@ -29,7 +30,8 @@ class MainActivity : AppCompatActivity() {
     private val chatListFragment = ChatListFragment()
     private val myPageFragment = MyPageFragment()
     private val homeFragment = HomeFragment()
-    private val tourFragment = TourFragment()
+//    private val tourFragment = TourFragment()
+    private val tourFragment = AttractionFragment(this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)

@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import com.example.nextdoorfriend.R
 import com.example.nextdoorfriend.databinding.FragmentAttractionDetailBinding
 
-class AttractionDetailFragment(val data: Attraction) : Fragment(R.layout.fragment_attraction_detail) {
+class AttractionDetailFragment(val data: Attraction, val imageId: Int) : Fragment(R.layout.fragment_attraction_detail) {
 
     private lateinit var activity: AttractionDetailActivity
 
@@ -24,6 +24,7 @@ class AttractionDetailFragment(val data: Attraction) : Fragment(R.layout.fragmen
         val binding = FragmentAttractionDetailBinding.bind(view)
 
         binding.apply {
+            imageView.setImageResource(imageId)
             attractNameTv.text = data.attractName
             addressTv.text = data.address
             attractContentsTv.text = data.attractContents

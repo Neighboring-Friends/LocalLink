@@ -57,6 +57,8 @@ class AttractionCourseFragment : Fragment(R.layout.fragment_attraction_course) {
 //            }.await()
 //        }
 
+        attractionCourseList.clear()
+
         getAllJob = CoroutineScope(Dispatchers.IO).launch {
             attractionCourseLoader.getAllWithFilter(
                 {

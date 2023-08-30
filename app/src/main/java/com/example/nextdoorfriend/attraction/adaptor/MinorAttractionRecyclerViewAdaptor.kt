@@ -30,6 +30,8 @@ class MinorAttractionRecyclerViewAdaptor(val context: Context, val itemList: Mut
         viewHolder.itemView.setOnClickListener {
             val intent = Intent(context, AttractionDetailActivity::class.java)
             intent.putAny("attraction", itemList[viewHolder.adapterPosition])
+            intent.putExtra("position", viewHolder.adapterPosition)
+            intent.putExtra("major", false)
             context.startActivity(intent)
         }
 
