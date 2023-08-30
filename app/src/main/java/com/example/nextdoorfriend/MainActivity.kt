@@ -81,10 +81,6 @@ class MainActivity : AppCompatActivity() {
         }
         replaceFragment(userFragment)
         supportActionBar?.title = "친구"
-
-        binding.testBtn.setOnClickListener {
-            startActivity(Intent(this, TestActivity::class.java))
-        }
     }
 
     private fun replaceFragment(fragment: Fragment) {

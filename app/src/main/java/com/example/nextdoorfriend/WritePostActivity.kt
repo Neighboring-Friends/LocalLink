@@ -21,6 +21,7 @@ class WritePostActivity: AppCompatActivity() {
             }
             submitButton.setOnClickListener {
                 Toast.makeText(this@WritePostActivity, "post~", Toast.LENGTH_SHORT).show()
+                finish()
             }
         }
     }
