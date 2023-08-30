@@ -6,6 +6,36 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <LinearLayout
+        android:id="@+id/language_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/korean_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/korean"
+            android:layout_margin="@dimen/margin"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/english_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/english"
+            android:layout_margin="@dimen/margin"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/chinese_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chinese"
+            android:layout_margin="@dimen/margin"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="0dp"
@@ -13,7 +43,7 @@
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/language_layout" />
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

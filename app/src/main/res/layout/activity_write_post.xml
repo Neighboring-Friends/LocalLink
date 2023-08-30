@@ -62,8 +62,7 @@
                     android:textColor="@color/primary"
                     android:text="@string/write_post_activity_et_label_1"
                     android:layout_weight="2"
-                    style="@style/major_title_text_style"
-                    tools:text="제   목"/>
+                    style="@style/major_title_text_style"/>
                 <EditText
                     android:id="@+id/write_post_edit_text_1"
                     android:layout_width="0dp"
@@ -71,8 +70,7 @@
                     android:layout_marginStart="@dimen/margin"
                     android:hint="@string/write_post_activity_et_hint_1"
                     android:layout_weight="8"
-                    style="@style/edit_text"
-                    tools:hint="제목 입력"/>
+                    style="@style/edit_text"/>
             </LinearLayout>
 
             <LinearLayout
@@ -87,8 +85,7 @@
                     android:textColor="@color/primary"
                     android:text="@string/write_post_activity_et_label_2"
                     android:layout_weight="2"
-                    style="@style/major_title_text_style"
-                    tools:text="사용언어"/>
+                    style="@style/major_title_text_style"/>
                 <EditText
                     android:id="@+id/write_post_edit_text_2"
                     android:layout_width="0dp"
@@ -96,8 +93,7 @@
                     android:layout_marginStart="@dimen/margin"
                     android:hint="@string/write_post_activity_et_hint_2"
                     android:layout_weight="8"
-                    style="@style/edit_text"
-                    tools:hint="English"/>
+                    style="@style/edit_text"/>
             </LinearLayout>
 
             <LinearLayout
@@ -112,8 +108,7 @@
                     android:textColor="@color/primary"
                     android:text="@string/write_post_activity_et_label_3"
                     android:layout_weight="2"
-                    style="@style/major_title_text_style"
-                    tools:text="모집인원"/>
+                    style="@style/major_title_text_style"/>
                 <EditText
                     android:id="@+id/write_post_edit_text_3"
                     android:layout_width="0dp"
@@ -137,8 +132,7 @@
                     android:textColor="@color/primary"
                     android:text="@string/write_post_activity_et_label_4"
                     android:layout_weight="2"
-                    style="@style/major_title_text_style"
-                    tools:text="일   시"/>
+                    style="@style/major_title_text_style"/>
                 <EditText
                     android:id="@+id/write_post_edit_text_4"
                     android:layout_width="0dp"
@@ -146,8 +140,7 @@
                     android:layout_marginStart="@dimen/margin"
                     android:hint="@string/write_post_activity_et_hint_4"
                     android:layout_weight="8"
-                    style="@style/edit_text"
-                    tools:hint="날짜를 입력하세요"/>
+                    style="@style/edit_text"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -165,8 +158,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/primary"
                 android:text="@string/write_post_activity_extra_content"
-                style="@style/major_title_text_style"
-                tools:text="추가 정보"/>
+                style="@style/major_title_text_style"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -204,8 +196,7 @@
             android:background="@drawable/round_stroke_sencondary"
             android:textColorHint="@color/hint_text_color"
             android:hint="@string/write_post_activity_extra_content_hint"
-            app:layout_constraintTop_toBottomOf="@id/secondary_content_layout"
-            tools:hint="Is there someone who wants to go to KimGuangSeok street?"/>
+            app:layout_constraintTop_toBottomOf="@id/secondary_content_layout"/>
 
         <Button
             android:id="@+id/submit_button"
@@ -214,8 +205,7 @@
             android:textSize="@dimen/major_title_text_size"
             android:layout_marginTop="15dp"
             android:text="@string/write_post_activity_post_button"
-            app:layout_constraintTop_toBottomOf="@id/posting_content_edit_text"
-            tools:text="등록"/>
+            app:layout_constraintTop_toBottomOf="@id/posting_content_edit_text"/>
 
     </LinearLayout>
 

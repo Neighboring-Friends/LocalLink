@@ -3,14 +3,16 @@ package com.example.nextdoorfriend
 
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.content.res.Configuration
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.nextdoorfriend.attraction.AttractionFragment
@@ -21,6 +23,7 @@ import com.example.nextdoorfriend.mypage.MyPageFragment
 import com.example.nextdoorfriend.userlist.UserFragment
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import java.util.Locale
 
 
 class MainActivity : AppCompatActivity() {
@@ -32,6 +35,7 @@ class MainActivity : AppCompatActivity() {
     private val homeFragment = HomeFragment()
 //    private val tourFragment = TourFragment()
     private val tourFragment = AttractionFragment(this)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -81,6 +85,47 @@ class MainActivity : AppCompatActivity() {
         }
         replaceFragment(userFragment)
         supportActionBar?.title = "친구"
+
+        binding.chineseButton.setOnClickListener {
+
+        }
+
+        binding.apply {
+            koreanButton.setOnClickListener {
+                setLanguage("ko")
+                restartActivity()
+            }
+            englishButton.setOnClickListener {
+                setLanguage("en")
+                restartActivity()
+            }
+            chineseButton.setOnClickListener {
+                setLanguage("zh")
+                restartActivity()
+            }
+
+        }
+
+    }
+
+    private fun setLanguage(languageCode: String) {
+        val newLocale = Locale(languageCode)
+        val res = resources
+        val config: Configuration = res.configuration
+        config.setLocale(newLocale)
+        res.updateConfiguration(config, res.displayMetrics)
+
+        // 선택한 언어 설정 저장
+        val preferences = getSharedPreferences("AppPreferences", Context.MODE_PRIVATE)
+        val editor = preferences.edit()
+        editor.putString("selected_language", languageCode)
+        editor.apply()
+    }
+
+    private fun restartActivity() {
+        val intent = intent
+        finish()
+        startActivity(intent)
     }
 
     private fun replaceFragment(fragment: Fragment) {

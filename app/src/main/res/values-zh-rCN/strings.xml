@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Local Link</string>
+    <string name="attraction_detail_tab_1">说明</string>
+    <string name="attraction_detail_tab_2">招募</string>
+    <string name="write_post_activity_page_title">旅游景点招募</string>
+    <string name="write_post_activity_et_label_1">标题</string>
+    <string name="write_post_activity_et_hint_1">输入标题</string>
+    <string name="write_post_activity_et_label_2">使用语言</string>
+    <string name="write_post_activity_et_hint_2">"英语 "</string>
+    <string name="write_post_activity_et_label_3">招募人员</string>
+    <string name="write_post_activity_et_label_4">一时</string>
+    <string name="write_post_activity_et_hint_4">请输入日期。</string>
+    <string name="write_post_activity_extra_content">附加信息</string>
+    <string name="write_post_activity_extra_content_hint">还有</string>
+    <string name="write_post_activity_post_button">注册</string>
+    <string name="korean">🇰🇷韩国语</string>
+    <string name="english">🇺🇸英语</string>
+    <string name="chinese">🇨🇳中文</string>
+</resources>

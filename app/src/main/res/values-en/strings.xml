@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Local Link</string>
+    <string name="attraction_detail_tab_1">Detail</string>
+    <string name="attraction_detail_tab_2">Recruit</string>
+    <string name="write_post_activity_page_title">Tour recruit</string>
+    <string name="write_post_activity_et_label_1">Title</string>
+    <string name="write_post_activity_et_hint_1">enter the title</string>
+    <string name="write_post_activity_et_label_2">Language</string>
+    <string name="write_post_activity_et_hint_2">English</string>
+    <string name="write_post_activity_et_label_3">Number of recruits</string>
+    <string name="write_post_activity_et_label_4">Datetime</string>
+    <string name="write_post_activity_et_hint_4">enter the datetime</string>
+    <string name="write_post_activity_extra_content">Additional Information</string>
+    <string name="write_post_activity_extra_content_hint">And..</string>
+    <string name="write_post_activity_post_button">Registration</string>
+    <string name="korean">🇰🇷korean</string>
+    <string name="english">🇺🇸English</string>
+    <string name="chinese">🇨🇳Chinese</string>
+</resources>

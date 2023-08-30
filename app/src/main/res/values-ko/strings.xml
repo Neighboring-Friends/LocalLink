@@ -1,24 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Local Link</string>
-    <string name="default_notification_channel_id" translatable="false">default_notification_channel_id</string>
-    
     <string name="attraction_detail_tab_1">설명</string>
     <string name="attraction_detail_tab_2">모집</string>
-
     <string name="write_post_activity_page_title">관광지 모집</string>
     <string name="write_post_activity_et_label_1">제목</string>
     <string name="write_post_activity_et_hint_1">제목 입력</string>
     <string name="write_post_activity_et_label_2">사용언어</string>
     <string name="write_post_activity_et_hint_2">영어</string>
     <string name="write_post_activity_et_label_3">모집인원</string>
-    <string name="write_post_activity_et_hint_3" translatable="false">1/10</string>
     <string name="write_post_activity_et_label_4">일시</string>
     <string name="write_post_activity_et_hint_4">날짜를 입력하세요</string>
     <string name="write_post_activity_extra_content">추가 정보</string>
     <string name="write_post_activity_extra_content_hint">그리고..</string>
     <string name="write_post_activity_post_button">등록</string>
-
-    <string name="korean">한국어</string>
-    <string name="english">English</string>
-    <string name="chinese">中文</string>
+    <string name="korean">🇰🇷한국어</string>
+    <string name="english">🇺🇸영어</string>
+    <string name="chinese">🇨🇳중국어</string>
 </resources>
