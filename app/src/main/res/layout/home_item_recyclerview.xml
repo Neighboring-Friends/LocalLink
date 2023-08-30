@@ -19,10 +19,9 @@
         android:backgroundTint="@color/secondary"
         android:textColor="@color/primary1"
 
-        android:text="모집중"
+        android:text="@string/home_recycler_item"
         android:textSize="15sp"
          />
-    />
 
     <TextView
         android:layout_width="200dp"

@@ -13,12 +13,14 @@ import com.google.android.material.tabs.TabLayoutMediator
 class HomeFragment : Fragment(R.layout.activity_homeviewpager) {
 
     private lateinit var binding: ActivityHomeviewpagerBinding
-    val imageItems = arrayListOf(HomeItem(R.drawable.image1,"Let's have lunch!","같이 밥 먹으며 친해져요")
-        ,HomeItem(R.drawable.image2,"Find Helper","한국 생활 중 모르는 일들을 도와드립니다!"),
-        HomeItem(R.drawable.image3,"tourist spot","같이 관광하며 친해져요"))
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = ActivityHomeviewpagerBinding.bind(view)
+
+        val imageItems = arrayListOf(HomeItem(R.drawable.image1,getString(R.string.banner_1_main),getString(R.string.banner_1_sub))
+            ,HomeItem(R.drawable.image2,getString(R.string.banner_2_main),getString(R.string.banner_2_sub)),
+            HomeItem(R.drawable.image3,getString(R.string.banner_3_main),getString(R.string.banner_3_sub)))
 
         binding.viewPager.adapter = HomeAdapter(this.requireContext(),imageItems) // 어댑터 생성
         binding.viewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL // 방향을 가로로

@@ -25,4 +25,16 @@
     <string name="korean">🇰🇷韩国语</string>
     <string name="english">🇺🇸英语</string>
     <string name="chinese">🇨🇳中文</string>
+    <string name="banner_1_main">我们吃午饭吧！</string>
+    <string name="banner_1_sub">一起吃饭 变亲近吧</string>
+    <string name="banner_2_main">寻找帮手</string>
+    <string name="banner_2_sub">帮助您做在韩国生活中不知道的事情！</string>
+    <string name="banner_3_main">旅游景点</string>
+    <string name="banner_3_sub">一起观光变亲近吧</string>
+    <string name="bottom_menu_1">主页</string>
+    <string name="bottom_menu_2">图尔</string>
+    <string name="bottom_menu_3">用户名单</string>
+    <string name="bottom_menu_4">聊天记录</string>
+    <string name="bottom_menu_5">我的主页</string>
+    <string name="home_recycler_item">征集</string>
 </resources>

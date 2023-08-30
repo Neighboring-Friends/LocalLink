@@ -32,6 +32,23 @@
     <string name="dialog_submit_button">신청</string>
     <string name="dialog_submit_message" translatable="false">send</string>
 
+    <string name="banner_1_main">Let\'s have lunch!</string>
+    <string name="banner_1_sub">같이 밥 먹으며 친해져요</string>
+
+    <string name="banner_2_main">Find Helper</string>
+    <string name="banner_2_sub">한국 생활 중 모르는 일들을 도와드립니다!</string>
+
+    <string name="banner_3_main">tourist spot</string>
+    <string name="banner_3_sub">같이 관광하며 친해져요</string>
+
+    <string name="bottom_menu_1">홈</string>
+    <string name="bottom_menu_2">관광지</string>
+    <string name="bottom_menu_3">유저리스트</string>
+    <string name="bottom_menu_4">채팅리스트</string>
+    <string name="bottom_menu_5">마이페이지</string>
+
+    <string name="home_recycler_item">모집중</string>
+
     <string name="korean">한국어</string>
     <string name="english">English</string>
     <string name="chinese">中文</string>

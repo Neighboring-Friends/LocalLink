@@ -25,4 +25,16 @@
     <string name="korean">🇰🇷korean</string>
     <string name="english">🇺🇸English</string>
     <string name="chinese">🇨🇳Chinese</string>
+    <string name="banner_1_main">Let\'s have lunch!</string>
+    <string name="banner_1_sub">Let\'s get close while eating together</string>
+    <string name="banner_2_main">Find Helper</string>
+    <string name="banner_2_sub">We help you with things you don\'t know about in Korea!</string>
+    <string name="banner_3_main">tourist spot</string>
+    <string name="banner_3_sub">Let\'s go sightseeing together and get close</string>
+    <string name="bottom_menu_1">Home</string>
+    <string name="bottom_menu_2">Tour</string>
+    <string name="bottom_menu_3">User List</string>
+    <string name="bottom_menu_4">Chating List</string>
+    <string name="bottom_menu_5">My Page</string>
+    <string name="home_recycler_item">Recruiting</string>
 </resources>
